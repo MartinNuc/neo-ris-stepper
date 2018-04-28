@@ -6,7 +6,7 @@ describe('StepperComponent', () => {
   let host: SpectatorWithHost<StepperComponent>;
   const createHost = createHostComponentFactory(StepperComponent);
 
-  it('should create a controller for 3 steps for 3 templates', () => {
+  it('should create a controller for 3 steps with 3 inner templates', () => {
     host = createHost(`
       <app-stepper #stepper>
         <ng-template #step>one</ng-template>

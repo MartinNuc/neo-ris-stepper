@@ -12,7 +12,8 @@ import {
   OnDestroy,
   EmbeddedViewRef,
   Input,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { NgTemplateOutlet } from '@angular/common';
@@ -21,7 +22,8 @@ import { StepperController } from './stepper-controller';
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.css']
+  styleUrls: ['./stepper.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StepperComponent implements AfterContentInit, OnDestroy {
 
@@ -30,7 +32,8 @@ export class StepperComponent implements AfterContentInit, OnDestroy {
   @Output()
   finished = new EventEmitter<void>();
 
-  @ContentChildren('step') steps: QueryList<TemplateRef<any>>;
+  @ContentChildren('step')
+  steps: QueryList<TemplateRef<any>>;
 
   @ViewChild('container', { read: NgTemplateOutlet })
   container: NgTemplateOutlet;
@@ -43,6 +46,7 @@ export class StepperComponent implements AfterContentInit, OnDestroy {
 
   displayTemplate(step: number) {
     this.displayedTemplate = this.steps.find((_, index) => step === index);
+    this.cdRef.detectChanges();
   }
 
   ngAfterContentInit() {
