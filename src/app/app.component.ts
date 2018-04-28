@@ -1,5 +1,4 @@
 import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
-import { StepperController } from './stepper-controller';
 import { StepperComponent } from './stepper/stepper.component';
 
 @Component({

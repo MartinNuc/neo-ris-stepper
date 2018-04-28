@@ -57,7 +57,11 @@ export class StepperComponent implements AfterContentInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.currentStepSubscription.unsubscribe();
-    this.onFinishSubscription.unsubscribe();
+    if (this.currentStepSubscription) {
+      this.currentStepSubscription.unsubscribe();
+    }
+    if (this.onFinishSubscription) {
+      this.onFinishSubscription.unsubscribe();
+    }
   }
 }

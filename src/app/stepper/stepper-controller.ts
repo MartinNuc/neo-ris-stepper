@@ -31,6 +31,10 @@ export class StepperController {
     this.goToStep(this.currentStep - 1);
   }
 
+  /**
+   * Moves stepper controller to a given step
+   * @param step step numbered from zero
+   */
   goToStep(step: number) {
     if (step > this.stepsCount) { throw new Error(`Trying to access step ${step} out of ${this.stepsCount}`); }
     if (step < 0) { throw new Error(`Trying to access step (${step}) lower than zero.`); }
