@@ -1,0 +1,7 @@
+<div class="steps">
+  <div class="step" *ngFor="let step of steps; let i = index" [class.active]="stepperController.currentStep === i">
+    {{i + 1}}
+  </div>
+</div>
+
+<ng-container *ngTemplateOutlet="displayedTemplate"></ng-container>
